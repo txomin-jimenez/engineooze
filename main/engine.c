@@ -1,3 +1,5 @@
-int engine_start() {
-    return 1;   
+#include "engine.h"
+
+void engine_start() {
+    engine.rpm = IDLE_RPM;
 }

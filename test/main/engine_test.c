@@ -12,8 +12,9 @@ void tearDown(void) {
 
 void test_can_be_started()
 {
-    int result = engine_start();
-    TEST_ASSERT_EQUAL(1, result);
+    engine_start();
+    
+    TEST_ASSERT_EQUAL(900, engine.rpm);
 }
 
 void run_engine_test() {

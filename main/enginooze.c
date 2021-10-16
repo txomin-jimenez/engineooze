@@ -4,6 +4,7 @@
 #include "freertos/task.h"
 #include <driver/dac.h>
 #include "sounds/idle.h"
+#include "engine.h"
 
 static const char *TAG = "Enginooze";
 volatile int sample_idx = 0;
@@ -36,6 +37,7 @@ void app_main(void)
 {
     ESP_LOGI(TAG, "Started!");
     enable_sound();
+    engine_start();
     idle();
     while (1)
     {
