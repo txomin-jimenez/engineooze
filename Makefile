@@ -1,4 +1,10 @@
-.PHONY: build test
+.PHONY: build flash test
+
+build:
+	idf.py build
+
+flash:
+	idf.py flash monitor
 
 build-test:
 	cd test && idf.py build
