@@ -4,6 +4,5 @@ idf_component_register(SRCS
                          "../../main/engine.c"
                     INCLUDE_DIRS
                         "."
-                        "include"
                         "../../main/include"
                     REQUIRES unity)

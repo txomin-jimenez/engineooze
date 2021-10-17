@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include "unity.h"
-#include "engine_test.h"
+#include "engine_test.c"
 
 
 int main(int argc, char **argv)
 {
-    printf("Running tests...\n\n");
-    UNITY_BEGIN();
+    printf("\nRunning tests...\n\n");
+    int failures;
 
-    run_engine_test();
+    failures = run_engine_test();
 
-    int failures = UNITY_END();
     return failures;
 }

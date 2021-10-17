@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include "unity.h"
 #include "engine.h"
-#include "engine_helpers.c";
+#include "engine_test_helpers.c"
 
-void setUp(void) {
+void engine_test_before_each(void) {
     stub_engine_stopped();
 }
 
-void tearDown(void) {
-    // clean stuff up here
+void engine_test_after_each(void) {
 }
 
 void test_provides_rpm_when_stopped()
@@ -29,9 +28,12 @@ void test_provides_rpm_when_running()
     TEST_ASSERT_EQUAL(3210, result);
 }
 
-void run_engine_test() {
+int run_engine_test()
+{
     printf("Engine\n");
-
-    RUN_TEST(test_provides_rpm_when_stopped);
-    RUN_TEST(test_provides_rpm_when_running);
+    printf("------\n");
+    UnityBegin("Engine");
+    RUN_ENGINE_TEST(test_provides_rpm_when_stopped);
+    RUN_ENGINE_TEST(test_provides_rpm_when_running);
+    return UNITY_END();
 }
