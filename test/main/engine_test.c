@@ -30,7 +30,7 @@ void test_provides_rpm_when_running()
 
 int run_engine_test()
 {
-    printf("Engine\n");
+    printf("\nEngine\n");
     printf("------\n");
     UnityBegin("Engine");
     RUN_ENGINE_TEST(test_provides_rpm_when_stopped);
