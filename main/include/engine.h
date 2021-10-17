@@ -7,6 +7,7 @@ struct Engine {
   int rpm;
 } engine;
 
-void engine_start();
+int engine_read_rpm();
+void engine_on_update(int rpm);
 
 #endif // ENGINE_H_

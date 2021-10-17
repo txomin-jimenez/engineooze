@@ -37,8 +37,11 @@ void app_main(void)
 {
     ESP_LOGI(TAG, "Started!");
     enable_sound();
-    engine_start();
+    int engine_rpm = engine_read_rpm();
+    ESP_LOGI(TAG, "Engine RPM: %i", engine_rpm);
+
     idle();
+    
     while (1)
     {
         vTaskDelay(100000 / portTICK_PERIOD_MS);

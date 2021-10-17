@@ -1,5 +1,10 @@
 #include "engine.h"
 
-void engine_start() {
-    engine.rpm = IDLE_RPM;
+
+int engine_read_rpm() {
+    return engine.rpm;
+}
+
+void engine_on_update(int rpm) {
+    engine.rpm = rpm;
 }
