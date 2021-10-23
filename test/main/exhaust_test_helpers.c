@@ -8,12 +8,18 @@
         exhaust_test_after_each(); \
     UnityConcludeTest();
 
-int sound_volume;
+SoundDevice test_sound_device;
 
-void sound_device_play() {
-    sound_volume = 100;
+void test_sound_device_play(void) {
+    test_sound_device.volume = 100;
 }
 
-void sound_device_mute() {
-    sound_volume = 0;
+void test_sound_device_mute(void) {
+    test_sound_device.volume = 0;
+}
+
+void test_sound_device_init(void)
+{
+    test_sound_device.play = test_sound_device_play;
+    test_sound_device.mute = test_sound_device_mute;
 }

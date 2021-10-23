@@ -11,8 +11,8 @@ static const char *TAG = "Enginooze";
 void app_main(void)
 {
     ESP_LOGI(TAG, "Started!");
-    sound_device_enable();
-    exhaust_init(sound_device_play);
+    sound_device_init();
+    exhaust_init(sound_device);
     
     engine_on_update(1000);
     int engine_rpm = engine_read_rpm();
