@@ -9,7 +9,7 @@
     UnityConcludeTest();
 
 void stub_engine_stopped() {
-    engine.rpm = 0;
+    engine_on_update(0);
 }
 
 void stub_engine_rpm(int rpm) {
