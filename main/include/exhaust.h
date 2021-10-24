@@ -4,9 +4,10 @@
 #include "sound_device.h"
 struct Exhaust {
   SoundDevice sound_device;
+  int idle_rpm;
 } exhaust;
 
-void exhaust_init(SoundDevice sound_device);
+void exhaust_init(SoundDevice sound_device, int idle_rpm);
 void exhaust_on_update(int rpm);
 
 #endif // EXHAUST_H_

@@ -5,7 +5,8 @@
 #include "sound_device.h"
 
 volatile int sample_idx = 0;
-static const int SAMPLE_INTERVAL_11025 = 90;
+esp_timer_handle_t sample_timer;
+static const int SAMPLE_INTERVAL_11025 = 91;
 
 void sound_device_set_sample(void *arg)
 {
@@ -14,14 +15,19 @@ void sound_device_set_sample(void *arg)
         sample_idx = 0;
 }
 
-void sound_device_play(void)
+void sound_device_play(float pitch)
 {
-    const esp_timer_create_args_t timargs = {
-        .callback = &sound_device_set_sample,
-        .name = "enginesound"};
-    esp_timer_handle_t every;
-    esp_timer_create(&timargs, &every);
-    esp_timer_start_periodic(every, SAMPLE_INTERVAL_11025);
+    if (sample_timer && esp_timer_is_active(sample_timer) == 1){
+        esp_timer_stop(sample_timer);
+    } else {
+        const esp_timer_create_args_t timargs = {
+            .callback = &sound_device_set_sample,
+            .name = "enginesound"};
+        esp_timer_create(&timargs, &sample_timer);
+    }
+    
+    int sample_interval = SAMPLE_INTERVAL_11025 * (1.0 - pitch);
+    esp_timer_start_periodic(sample_timer, sample_interval);
 }
 
 void sound_device_mute(void) {}

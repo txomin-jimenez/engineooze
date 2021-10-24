@@ -10,8 +10,9 @@
 
 SoundDevice test_sound_device;
 
-void test_sound_device_play(void) {
+void test_sound_device_play(float pitch) {
     test_sound_device.volume = 100;
+    test_sound_device.pitch = pitch;
 }
 
 void test_sound_device_mute(void) {

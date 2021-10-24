@@ -3,7 +3,8 @@
 
 typedef struct SoundDeviceT {
     int volume;
-    void (*play)(void);
+    float pitch;
+    void (*play)(float pitch);
     void (*mute)(void);
 } SoundDevice;
 
