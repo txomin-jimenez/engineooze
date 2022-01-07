@@ -25,12 +25,16 @@ void sound_device_play(float pitch)
             .name = "enginesound"};
         esp_timer_create(&timargs, &sample_timer);
     }
-    
+
     int sample_interval = SAMPLE_INTERVAL_11025 * (1.0 - pitch);
     esp_timer_start_periodic(sample_timer, sample_interval);
 }
 
-void sound_device_mute(void) {}
+void sound_device_mute(void) {
+    if (sample_timer && esp_timer_is_active(sample_timer) == 1){
+        esp_timer_stop(sample_timer);
+    }
+}
 
 void sound_device_init(void)
 {
