@@ -6,4 +6,5 @@ idf_component_register(SRCS
                     INCLUDE_DIRS
                         "."
                         "../../main/include"
+                        "../../main"
                     REQUIRES unity)

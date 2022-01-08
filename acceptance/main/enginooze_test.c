@@ -5,6 +5,7 @@
 #include "engine.h"
 #include "exhaust.h"
 #include "sound_device.h"
+#include "sounds/idle.h"
 
 static const char *TAG = "Acceptance";
 
@@ -14,7 +15,8 @@ void app_main(void)
 
     sound_device_init();
 
-    exhaust_init(sound_device, IDLE_RPM);
+    SoundSampleT idle_sound = sound_sample_init(wave_idle_data, wave_idle_len);
+    exhaust_init(sound_device, IDLE_RPM, &idle_sound);
     engine_on_update(IDLE_RPM);
 
     int engine_rpm = engine_read_rpm();

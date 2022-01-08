@@ -5,9 +5,10 @@
 struct Exhaust {
   SoundDevice sound_device;
   int idle_rpm;
+  SoundSampleT *idle_sound;
 } exhaust;
 
-void exhaust_init(SoundDevice sound_device, int idle_rpm);
+void exhaust_init(SoundDevice sound_device, int idle_rpm, SoundSampleT *idle_sound);
 void exhaust_on_update(int rpm);
 
 #endif // EXHAUST_H_
